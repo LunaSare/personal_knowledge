@@ -14,15 +14,19 @@ server <- function(input, output) {
     #   path[1]="./images/freq.jpg": No such file or directory
     # Warning: Error in dev.off: QuartzBitmap_Output - unable to open file './images/freq.jpg'
 
+
     output$maingraph <- renderUI({
+      graph <- switch(input$graphtype,
+        tc = 'cloud_',
+        tf = 'freq_')
       # if(myval() == 'type1')
       #   img(src='zorro.jpg', height = '300px')
       # else
-        img(src='simpson.png', height = '100%')
+        img(src = paste0(graph, abs(input$minutes), ".png"), height = '100%')
     })
-    output$freq <- renderUI({
-      img(src='freq.png', height = '100%')
-    })
+    # output$freq <- renderUI({
+    #   img(src='freq.png', height = '100%')
+    # })
 }
 
 # shinyApp(ui, server)  # this is not needed if we have two different files with server and ui

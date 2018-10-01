@@ -20,12 +20,16 @@ ui <- fluidPage(
       show the frequency of topics appearing on your desktop for any amount of time.
       Try changing the time and look how your browsing behaviour changes through
       the day to make your day more productive!"), br(),
-      sliderInput("minutes", "The past minutes of my life:",
-                    min = 1,  max = 525600, value = 1), br(),
-      actionButton("cat", "Show me my more!"),
+      sliderInput("minutes", "The past minutes of my time:",
+                    min = -30,  max = -1, value = -30, animate = TRUE), br(),
+      radioButtons("graphtype", "Show me more!",
+             c("Topic cloud" = "tc",
+               "Topic frequency" = "tf")),
+      # actionButton("cat", "Show me my more!"),
       # actionButton("wc", "Show me my cloud"),
-      br(),
-      imageOutput(outputId = "freq")
+      br()
+      # imageOutput(outputId = "freq")
+      # uiOutput(outputId = "freq")
 
     ),
     # Main panel for displaying outputs ----
@@ -35,7 +39,7 @@ ui <- fluidPage(
       # img(source = "bananya_brushing.jpg", width = 400, height = 140)
     # imageOutput("rstudio", width = 40, height = 14),
     # imageOutput("cat", width = 40, height = 14)
-      uiOutput(outputId = "wordcloud", align = "center")
+      uiOutput(outputId = "maingraph", align = "center", height = "100%")
 
     )
   )
