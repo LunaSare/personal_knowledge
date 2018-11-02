@@ -76,20 +76,19 @@ for (i in 2:31){ #length(words)
     coord_polar(start = 0) +
     # Add the labels, using the label_data dataframe that we have created before
     geom_text(data=label_data, aes(x=id, y=150, label=individual, hjust=hjust), color="black", fontface="bold",alpha=0.6, size=3, angle= label_data$angle, inherit.aes = FALSE )
-# p
   print(p)
   dev.off()
 }
 
 
-wordcloud_rep <- repeatable(wordcloud)
+# wordcloud_rep <- repeatable(wordcloud)
 
-output$plot <- renderPlot({
-  v <- terms()
-  wordcloud_rep(names(v), v, scale=c(4,0.5),
-                min.freq = input$freq, max.words=input$max,
-                colors=brewer.pal(8, "Dark2"))
-})
+# output$plot <- renderPlot({
+#   v <- terms()
+#   wordcloud_rep(names(v), v, scale=c(4,0.5),
+#                 min.freq = input$freq, max.words=input$max,
+#                 colors=brewer.pal(8, "Dark2"))
+# })
 
 
 # original version with test and fake data:
